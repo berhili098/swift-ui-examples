@@ -8,11 +8,31 @@
 import SwiftUI
 
 struct ProcessView: View {
+    let name: String
+    let age: String
+
+    var numericalAge: Int {
+        return Int(age) ?? 0
+    }
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("You have entered the following information")
+
+        Text("Name: \(name)")
+        Text("Age: \(age)")
+
+        if numericalAge > 18 {
+            Text("you can drink \(name)")
+        } else if numericalAge <= 0 {
+            Text("invalid input")
+        }
+
+        else {
+            Text("you can't drink \(name)")
+        }
     }
 }
 
 #Preview {
-    ProcessView()
+    ProcessView(name: "Oussama", age: "25")
 }

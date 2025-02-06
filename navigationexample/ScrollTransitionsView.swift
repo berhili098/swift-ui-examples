@@ -8,11 +8,27 @@
 import SwiftUI
 
 struct ScrollTransitionsView: View {
+    
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView(.horizontal){
+            HStack{
+                ForEach(0..<10){ index in
+                    ZStack {
+                        Image( images[index])
+                            .resizable()
+                            .scaledToFit()
+                            .clipShape(.rect(cornerRadius: 20))
+//                            .padding()
+                            .frame(maxWidth:350, maxHeight: 350)
+                    }
+                }
+            }
+        }
     }
 }
 
 #Preview {
     ScrollTransitionsView()
+
 }
