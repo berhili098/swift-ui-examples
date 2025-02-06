@@ -11,7 +11,7 @@ struct BlurEffectsView: View {
     @State private var mainBlurRadius : Double = 10.0
     @State private var redBlurRadius : Double = 10.0
     @State private var blueBlurRadius : Double = 10.0
-    let colors : [Color] = [.purple , .blue , .orange , .green]
+   
     let blendModes :[BlendMode] = [
         .plusLighter,.softLight,.normal
     ]

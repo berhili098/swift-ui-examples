@@ -8,11 +8,44 @@
 import SwiftUI
 
 struct CustomColorPicker: View {
+    let text : String
+    @Binding var selectedColor : Color
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .leading, spacing: 5){
+            Text(text)
+                .font(.headline)
+                .fontWeight(.semibold)
+            ScrollView(.horizontal, showsIndicators: false) {
+                HStack{
+                    ForEach(colors ,  id: \.self){ color in
+                        ColorCircle(color: color, isSelcted: color == selectedColor)
+                            .onTapGesture{
+                                withAnimation{
+                                    selectedColor = color
+                                }
+                                
+                                
+                            }
+                    }
+                        
+                    
+                }
+              
+            }
+                .padding(.vertical, 7)
+                .background(
+                    Color.gray.opacity(0.2)
+                )
+                .clipShape(RoundedRectangle(cornerRadius: 10))
+            
+        }
     }
 }
 
 #Preview {
-    CustomColorPicker()
+    CustomColorPicker(
+        text : "Color",
+        selectedColor: .constant(.red)
+    )
 }

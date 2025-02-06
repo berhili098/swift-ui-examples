@@ -8,8 +8,33 @@
 import SwiftUI
 
 struct ContentViewBingingExample: View {
+    @State private var color1 : Color = .red
+    @State private var color2 : Color = .green
+    @State private var color3 : Color = .blue
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+           Color .blue.opacity(0.2).ignoresSafeArea()
+            VStack{
+                HStack{
+                    RecTangleViewExample(color: color1)
+                    RecTangleViewExample(color: color2)
+                    RecTangleViewExample(color: color3)
+                    
+                }
+                .padding()
+                ColorPicker("Pick color 1", selection: $color1)
+                ColorPicker("Pick color 2", selection: $color2)
+                ColorPicker("Pick color 3", selection: $color3)
+                
+                CustomColorPicker(text : "Pick color 1", selectedColor: $color1)
+                CustomColorPicker(text : "Pick color 2", selectedColor: $color2)
+                CustomColorPicker(text : "Pick color 3", selectedColor: $color3)
+                
+                    
+                
+            }.padding()
+        }
+       
     }
 }
 
