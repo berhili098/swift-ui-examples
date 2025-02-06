@@ -13,10 +13,29 @@ struct TabViewExample: View {
             Tab("Watch" , systemImage: "play"){
                 Text("Watching something")
             }
-            Tab("Read", systemImage: "book.pages.fill"){
-                Text("Reading something")
+            Tab("Sleep", systemImage: "sleep.circle"){
+                shortproject()
             }
-        }
+            TabSection("Collections") {
+                Tab("Record Collection" , systemImage: "play"){
+                    Text("Watching something")
+                }
+                Tab("Stamp Collection", systemImage: "sleep.circle"){
+                    Text("Sleep something")
+                }
+            }
+            TabSection("Hobbies") {
+                Tab("Tab 1" , systemImage: "person"){
+                    Text("Tab 1 View")
+                }
+                Tab("Tab 2 ", systemImage: "trash"){
+                    Text("Tab 2 View")
+                }
+            }
+           
+           
+            
+        }.tabViewStyle(.sidebarAdaptable)
     }
 }
 

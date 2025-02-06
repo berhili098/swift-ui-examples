@@ -13,15 +13,27 @@ struct ScrollTransitionsView: View {
     var body: some View {
         ScrollView(.horizontal){
             HStack{
-                ForEach(0..<10){ index in
+                ForEach(images , id: \.self){ image in
                     ZStack {
-                        Image( images[index])
-                            .resizable()
-                            .scaledToFit()
-                            .clipShape(.rect(cornerRadius: 20))
-//                            .padding()
-                            .frame(maxWidth:350, maxHeight: 350)
-                    }
+                        MyImageView(name:image )
+                            .scrollTransition(axis: .horizontal ){
+                                content , phase in
+                                let value = phase.value
+                                let contrast = phase.isIdentity ? 1 : 3 * (1+phase.value)
+                                let opacity = cos((.pi/2)*value)
+                                let brightness = abs(phase.value) * 0.3
+                                return content
+                                    .offset(
+                                        x: value * (-500)
+                                    )
+                                    .opacity(opacity)
+                                    .contrast(contrast)
+                                    .brightness(brightness)
+                                
+                                    
+                            }
+                    }.containerRelativeFrame(.horizontal)
+                        .clipShape(.rect(cornerRadius:30))
                 }
             }
         }
