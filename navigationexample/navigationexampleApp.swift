@@ -11,7 +11,7 @@ import SwiftUI
 struct navigationexampleApp: App {
     var body: some Scene {
         WindowGroup {
-            MyMeshView()
+            ObserveObjectView()
         }
     }
 }

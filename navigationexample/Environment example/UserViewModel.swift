@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+class UserViewModel: ObservableObject {
+    @Published var name : String = "Oussama"
+    
+    
+}

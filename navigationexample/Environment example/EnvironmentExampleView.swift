@@ -8,11 +8,43 @@
 import SwiftUI
 
 struct EnvironmentExampleView: View {
+    @EnvironmentObject var userViewModel: UserViewModel
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack{
+            Text("Contentview : \(userViewModel.name)")
+                .font(.title)
+            
+            NavigationLink(destination: UserDataView()){
+                Text("Go to User Data")
+                    .padding()
+                    .background(Color.blue)
+            }
+            
+        }
+    }
+}
+
+
+struct UserDataView: View {
+    @EnvironmentObject var userViewModel: UserViewModel
+    var body: some View {
+        NavigationStack{
+            Text("User Data : \(userViewModel.name)")
+                .font(.title)
+            TextField("Enter your name", text: $userViewModel.name)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+            
+        }
     }
 }
 
 #Preview {
+    UserDataView()
+        .environmentObject(UserViewModel())
+}
+
+#Preview {
     EnvironmentExampleView()
+        .environmentObject(UserViewModel())
 }
