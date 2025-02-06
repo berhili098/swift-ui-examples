@@ -22,7 +22,7 @@ enum ProfileImageSize {
 }
     
 
-struct ContentView: View {
+struct ExploringViews: View {
     @State private var text: [String] = ["Exploring Views", "SwiftUI", "Navigation"]
     @State private var backgroundColor: Color = .white
     @State private var index: Int = 0
@@ -116,5 +116,5 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    ExploringViews()
 }
